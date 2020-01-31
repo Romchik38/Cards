@@ -3,7 +3,8 @@
 const templateFooter = parameters => {
   const data = `
   <footer>
-    <p>Only for internal use only.</p>
+    <hr />
+    <p>For internal use only.</p>
     <p>2020</p>
   </footer>
   `;

@@ -11,6 +11,7 @@ const templateHeader = parameters => {
        <h2>Menu</h2>
        <ul>
          <li><a href="/" target="_self">Main page</a></li>
+         <li><a href="/search" target="_self">Search</a></li>
        </ul>
     </nav>
   `;

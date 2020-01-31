@@ -1,9 +1,10 @@
 'use strict';
 
-const { main } = require('./urlsfn');
+const { main, search } = require('./urlsfn');
 
 const urls = {
   '/': main,
+  '/search': search,
   '/*\\.*': {
     '.ico': 'public/img',
     '.jpeg': 'public/img',

@@ -33,7 +33,6 @@ const types = {
     const folder = param[ext];
     if (folder) {
       const filePath = `${DIR_PATH}${folder}${url}`;
-      console.log(filePath);
       try {
         const data = fs.readFileSync(filePath);
         return { writeHead: [200], data };
