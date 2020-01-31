@@ -4,6 +4,11 @@ const getTemplate = require('./gettemplate');
 const path = require('path');
 const fs = require('fs');
 
+// Заплатка для windows. в linux нужно по другому
+const HOME_DRIVE = process.env.HOMEDRIVE;
+const HOME_PATH = process.env.HOMEPATH;
+const DIR_PATH = HOME_DRIVE + HOME_PATH + '/Projects/cards/';
+
 const types = {
   'string': (param) => {
     const writeHead = [
@@ -27,7 +32,8 @@ const types = {
     const ext = path.extname(url);
     const folder = param[ext];
     if (folder) {
-      const filePath = `./${folder}${url}`;
+      const filePath = `${DIR_PATH}${folder}${url}`;
+      console.log(filePath);
       try {
         const data = fs.readFileSync(filePath);
         return { writeHead: [200], data };

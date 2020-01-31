@@ -3,8 +3,8 @@
 const templateHeader = parameters => {
   const data = `
     <header>
-      <h1>Adding and viewing cards</h1>
-      <h2>Wellcome to our site</h2>
+      <h2>Adding and viewing cards</h1>
+      <p>Wellcome to our site</p>
       <hr />
     </header>
     <nav>

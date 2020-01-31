@@ -5,9 +5,9 @@ const { main } = require('./urlsfn');
 const urls = {
   '/': main,
   '/*\\.*': {
-    '.ico': 'private/img',
-    '.jpeg': 'private/img',
-    '.js': 'private/scripts',
+    '.ico': 'public/img',
+    '.jpeg': 'public/img',
+    '.js': 'public/scripts',
   },
 };
 
