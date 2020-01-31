@@ -26,9 +26,7 @@ const serialize = req => {
 };
 
 const server = http.createServer((req, res) => {
-  let result;
-  result = serialize(req);
-
+  const result = serialize(req);
   const { writeHead, data } = result;
   res.writeHead(...writeHead);
   res.end(data);
