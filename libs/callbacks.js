@@ -9,4 +9,8 @@ callbacks.url = function(elem) {
   }
 };
 
+callbacks.cardsAll = function(elem) {
+  return elem;
+};
+
 module.exports = callbacks;
