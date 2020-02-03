@@ -3,10 +3,9 @@
 const fs = require('fs');
 const path = require('path');
 
-// Заплатка для windows. в linux нужно по другому
-const HOME_DRIVE = process.env.HOMEDRIVE;
-const HOME_PATH = process.env.HOMEPATH;
-const DIR_PATH = HOME_DRIVE + HOME_PATH + '/Projects/cards/database/';
+const { projectPath } = require('./projectPath')
+
+const DIR_PATH = projectPath + '/database/';
 
 const dir = fs.readdirSync(DIR_PATH);
 const base = Object.create(null);

@@ -3,11 +3,9 @@
 const getTemplate = require('./gettemplate');
 const path = require('path');
 const fs = require('fs');
+const { projectPath } = require('./projectPath')
 
-// Заплатка для windows. в linux нужно по другому
-const HOME_DRIVE = process.env.HOMEDRIVE;
-const HOME_PATH = process.env.HOMEPATH;
-const DIR_PATH = HOME_DRIVE + HOME_PATH + '/Projects/cards/';
+const DIR_PATH = projectPath;
 
 const types = {
   'string': (param) => {

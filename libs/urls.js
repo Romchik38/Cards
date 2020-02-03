@@ -6,9 +6,9 @@ const urls = {
   '/': main,
   '/search': search,
   '/*\\.*': {
-    '.ico': 'public/img',
-    '.jpeg': 'public/img',
-    '.js': 'public/scripts',
+    '.ico': '/public/img',
+    '.jpeg': '/public/img',
+    '.js': '/public/scripts',
   },
 };
 
