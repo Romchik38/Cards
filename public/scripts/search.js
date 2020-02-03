@@ -2,6 +2,8 @@
 
 const btnSearch = document.querySelector('#btnSearch');
 const inpSearch = document.querySelector('#inpSearch');
+const spanNumber = document.querySelector('#spanNumber');
+const spanName = document.querySelector('#spanName');
 
 const hideButton = param => {
   if (param === true) {
@@ -14,6 +16,16 @@ const hideButton = param => {
 };
 
 btnSearch.addEventListener('click', () => {
-  if (inpSearch.value.length === 0) return;
+  const data = inpSearch.value;
+  if (data.length === 0) return;
   hideButton(true);
+  fetch('/getnumber', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+    'Content-Type': 'application/json',
+    }
+  })
+  .then(response => response.json())
+  .then(json => spanNumber.innerText = json);
 });

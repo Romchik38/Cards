@@ -18,15 +18,15 @@ const routing = url => {
   return urlValue;
 };
 
-const serialize = req => {
+const serialize = (req, res) => {
   const urlValue = routing(req.url);
   const type = typeof urlValue;
   const result = types[type];
-  return result(urlValue, new Page(req));
+  return result(urlValue, new Page(req, res));
 };
 
 const server = http.createServer((req, res) => {
-  const result = serialize(req);
+  const result = serialize(req, res);
   const { writeHead, data } = result;
   res.writeHead(...writeHead);
   res.end(data);
