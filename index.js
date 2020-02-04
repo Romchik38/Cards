@@ -27,9 +27,11 @@ const serialize = (req, res) => {
 
 const server = http.createServer((req, res) => {
   const result = serialize(req, res);
-  const { writeHead, data } = result;
-  res.writeHead(...writeHead);
-  res.end(data);
+  if (result) {
+    const { writeHead, data } = result;
+    res.writeHead(...writeHead);
+    res.end(data);
+  }
 });
 
 server.listen(8080);
