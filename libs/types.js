@@ -3,7 +3,7 @@
 const getTemplate = require('./gettemplate');
 const path = require('path');
 const fs = require('fs');
-const { projectPath } = require('./projectPath')
+const { projectPath } = require('./projectPath');
 const { bigintFns } = require('./urlsBigint');
 
 const DIR_PATH = projectPath;
@@ -20,9 +20,6 @@ const types = {
     const key = param.toString();
     const fn = bigintFns[key];
     fn(page);
-    const response = JSON.stringify('working');
-    const writeHead = [200];
-    return { writeHead, data: response };
   },
   'boolean': () => {},
   'function': (param, page) => {

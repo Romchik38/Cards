@@ -8,9 +8,7 @@ const tem = parameters => {
   const head = headTemplate(parameters);
   const header = headerTemplate(parameters);
   const footer = footerTemplate(parameters);
-  const { cardsAll } = parameters;
-  let counter = 0;
-  let data = `
+  const data = `
    <body>
      <section>
        <h1>Adding Cards</h1>
@@ -23,24 +21,14 @@ const tem = parameters => {
       </section>
       <section>
         <div>
-          <span id="spanNumber">number</span>: <span id="spanName">name</span>
+          <span id="spanResult">add number</span>
         </div>
-        <table>
+        <table id=tableResult>
           <tr>
             <td>#</td>
             <td>Number</td>
             <td>Name</td>
-          <tr/>`;
-          for (const val of cardsAll) {
-            data += `
-              <tr>
-              <td>${++counter}</td>
-              <td>${val['number']}</td>
-              <td>${val['name']}</td>
-              <tr/>
-            `
-          }
-        data += `
+          <tr/>
         </table>
       </section>
       </br>${footer}

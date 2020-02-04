@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { projectPath } = require('./projectPath')
+const { projectPath } = require('./projectPath');
 
 const DIR_PATH = projectPath + '/database/';
 
