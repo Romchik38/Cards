@@ -10,9 +10,17 @@ const bigintNumbers = {
   'first': () => 1n,
 };
 
+const response = (res, status, data) => {
+  res.writeHead(status);
+  res.end(data);
+};
+
 const bigintFns = {
   '1': (page, cards) => {
-    if (page.method !== 'POST') return;  //добавить bad request
+    if (page.method !== 'POST') {
+      response(page.res, 400, '');
+      return;
+    }
     let body = [];
     page.req.on('data', (chunk) => {
       body.push(chunk);
@@ -23,12 +31,13 @@ const bigintFns = {
         const result = getparameters(
           {number: body}, 'cards', cardsByNumber
         ) || [];
-        const response = JSON.stringify(result);
-        const writeHead = [200];
-        page.res.end(response);
+        const responseData = JSON.stringify(result);
+        response(page.res, 200, responseData)
+      } else {
+        response(page.res, 400, '');
+        return;
       }
     });
-
   },
 };
 

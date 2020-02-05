@@ -2,7 +2,7 @@
 
 const connector = require('./connector');
 
-const { url, cardsAll } = require('./callbacks.js');
+const { url } = require('./callbacks.js');
 
 const getparameters = (param, table, callback) =>
   connector('database', table, callback.bind(param));
