@@ -12,10 +12,6 @@ const urlsFn = {
     const data = getparameters({ url: page.url }, 'pages', url)[0];
     page.parameters['title'] = data.title;
   },
-  'search': page => {
-    const data = getparameters({ url: page.url }, 'pages', url)[0];
-    page.parameters['title'] = data.title;
-  },
 };
 
 module.exports = urlsFn;

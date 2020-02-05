@@ -1,12 +1,14 @@
 'use strict';
 
-const { main, search } = require('./urlsFn');
+const { main } = require('./urlsFn');
 const { bigintNumbers } = require('./urlsBigint');
 
 const urls = {
   '/': main,
-  '/search': search,
+  '/search': main,
+  '/add': main,
   '/getnumber': bigintNumbers.first(),
+  '/addcard': bigintNumbers.first(),
   '/*\\.*': {
     '.ico': '/public/img',
     '.jpeg': '/public/img',

@@ -11,17 +11,19 @@ const tem = parameters => {
   const data = `
    <body>
      <section>
-       <h1>Searching Cards</h1>
-       <p>You can find a card by number. Please fill the form below</p>
+       <h1>Adding Cards</h1>
+       <p>You can add a card. Please fill the form below</p>
        <div>
-         <input type="text" id="inpSearch" value="" placeholder="Input a number" autofocus>
-         <input type="button" id="btnSearch" value="search">
+         <textarea id="textArea1" value="" placeholder="Name, tel, email" maxlength="100" autofocus cols="50" rows
+="3"></textarea>
+         </br>
+         <input type="button" id="btnAdd" value="Add">
          </br>
        </div>
       </section>
       <section>
         <div>
-          <span id="spanResult">add number</span>
+          <span id="spanResult">added information</span>
         </div>
         <table id=tableResult>
           <tr>
@@ -32,7 +34,7 @@ const tem = parameters => {
         </table>
       </section>
       </br>${footer}
-      <script src="/search.js"></script>
+      <script src="/add.js"></script>
    </body>
   `;
   const html = head.concat(header).concat(data);
