@@ -20,4 +20,8 @@ callbacks.cardsByNumber = function(elem) {
   }
 };
 
+callbacks.insert = function() {
+  return this;
+};
+
 module.exports = callbacks;
