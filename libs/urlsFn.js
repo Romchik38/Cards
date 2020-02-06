@@ -2,15 +2,24 @@
 
 const connector = require('./connector');
 
-const { url } = require('./callbacks.js');
+const { url, cardsAll } = require('./callbacks.js');
 
-const getparameters = (param, table, callback) =>
-  connector('database', table, callback.bind(param));
+const getparameters = (param, table, operation, callback) =>
+  connector('database', table, operation, callback.bind(param));
+
+const generalParameters = page => {
+  const data = getparameters({ url: page.url }, 'pages', 'select', url)[0];
+  page.parameters['title'] = data.title;
+};
 
 const urlsFn = {
   'main': page => {
-    const data = getparameters({ url: page.url }, 'pages', url)[0];
-    page.parameters['title'] = data.title;
+    generalParameters(page);
+  },
+  'add': page => {
+    generalParameters(page);
+    const selectedCards = getparameters({}, 'cards', 'select', cardsAll);
+    page.parameters['lastTen'] = selectedCards.slice(-10).reverse();
   },
 };
 

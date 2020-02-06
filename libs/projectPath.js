@@ -1,6 +1,6 @@
 'use strict';
 
-const { os } = require('./consts.js');
+const { OS } = require('./consts.js');
 
 const paths = {
   'linux': () => process.env.PWD,
@@ -19,6 +19,6 @@ const path = os => {
   }
 };
 
-const projectPath = path(os);
+const projectPath = path(OS);
 
 module.exports = { projectPath };

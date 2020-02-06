@@ -1,12 +1,12 @@
 'use strict';
 
-const { main } = require('./urlsFn');
+const { main, add } = require('./urlsFn');
 const { bigintNumbers } = require('./urlsBigint');
 
 const urls = {
   '/': main,
   '/search': main,
-  '/add': main,
+  '/add': add,
   '/getnumber': bigintNumbers.first(),
   '/addcard': bigintNumbers.first(),
   '/*\\.*': {

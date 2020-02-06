@@ -6,8 +6,8 @@ const templateHead = parameters => {
   <!DOCTYPE html>
   <html lang="ru">
     <head>
+      <meta charset="utf-8">
       <title>${title}</title>
-      
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
       <link rel="icon" href="/favicon.ico" type="image/x-icon">
     </head>

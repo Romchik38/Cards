@@ -1,18 +1,23 @@
 'use strict';
 
 const connector = require('./connector');
-const { cardsByNumber } = require('./callbacks');
+const { cardsByNumber, cardsAll, insert } = require('./callbacks');
+const { PREFIX } = require('./consts');
 
-const getparameters = (param, table, callback) =>
-  connector('database', table, callback.bind(param));
+const getparameters = (param, table, operation, callback) =>
+  connector('database', table, operation, callback.bind(param));
 
 const serializer = {
   '/getnumber': number => getparameters(
-    { number }, 'cards', cardsByNumber
+    { number }, 'cards', 'select', cardsByNumber
   ) || [],
-  '/addcard': data => {
-    console.log(data);
-    return ['hello'];
+  '/addcard': name => {
+    const cards = getparameters({}, 'cards', 'select', cardsAll);
+    const size = cards.length;
+    const number = PREFIX.concat(size);
+    getparameters({ number, name }, 'cards', 'insert', insert);
+
+    return cards;
   }
 };
 
