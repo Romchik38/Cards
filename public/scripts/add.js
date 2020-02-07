@@ -22,6 +22,12 @@ const createElem = (tag, value = '') => {
 };
 
 const removeTr = () => {
+  const trLoaded = tableResult.querySelectorAll('tr[name="trIsLoaded"]');
+  if (trLoaded) {
+    for (const val of trLoaded) {
+      val.remove();
+    }
+  }
   const trDel = tableResult.querySelectorAll("tr[name='trIsAdded']");
   for (const val of trDel) {
     val.remove();
@@ -29,11 +35,14 @@ const removeTr = () => {
 };
 
 const fillTable = obj => {
+  let counter = 0;
   removeTr();
   if (obj) {
     for (const val of obj) {
       const tableTr = createElem('tr');
-      tableTr.setAttribute('name', `trIsAdded`);
+      tableTr.setAttribute('name', 'trIsAdded');
+      const tableTdCounter = createElem('td', ++counter);
+      tableTr.appendChild(tableTdCounter);
       const tableTdNumber = createElem('td', val.number);
       tableTr.appendChild(tableTdNumber);
       const tableTdName = createElem('td', val.name);
@@ -49,7 +58,8 @@ const parseData = data => {
     spanResult.innerText = 'error, new card wasn\'t created';
     fillTable();
   } else {
-    spanResult.innerText = `new card added`;
+    spanResult.innerText = 'new card added';
+    textArea1.value = '';
     fillTable(data);
   }
   hideButton(false);
@@ -63,11 +73,11 @@ btnAdd.addEventListener('click', () => {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
-    'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
     }
   })
-  .then(response => response.json())
-  .then(json => {
-    parseData(json);
-  });
+    .then(response => response.json())
+    .then(json => {
+      parseData(json);
+    });
 });

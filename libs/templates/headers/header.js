@@ -5,7 +5,7 @@ const templateHeader = parameters => {
     <header>
       <h2>Adding and viewing cards</h1>
       <p>Wellcome to our site</p>
-      <hr />
+      <hr/>
     </header>
     <nav>
        <h2>Menu</h2>

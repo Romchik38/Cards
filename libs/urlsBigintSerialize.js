@@ -16,8 +16,8 @@ const serializer = {
     const size = cards.length;
     const number = PREFIX.concat(size);
     getparameters({ number, name }, 'cards', 'insert', insert);
-
-    return cards;
+    const cardsUpdated = getparameters({}, 'cards', 'select', cardsAll);
+    return cardsUpdated.slice(-10).reverse();
   }
 };
 

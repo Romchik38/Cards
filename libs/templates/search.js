@@ -28,8 +28,15 @@ const tem = parameters => {
             <td>#</td>
             <td>Number</td>
             <td>Name</td>
+            <td><span id="spanUpdate">Update</td>
           <tr/>
         </table>
+        <div style="display:none" id="divUpdate">
+        <p id="pUpdate"></p>
+        <textarea id="textAreaUpdate" value="" maxlength="100" cols="50" rows="3">
+        </textarea></br>
+        <input type="button" id="btnSave" value="save">
+        </div>
       </section>
       </br>${footer}
       <script src="/search.js"></script>

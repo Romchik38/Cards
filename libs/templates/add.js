@@ -28,28 +28,32 @@ const tem = parameters => {
           <span id="spanResult">Last 10 cards</span>
         </div>
         <table id=tableResult>
+        <thead>
         <tr>
           <td>#</td>
           <td>Number</td>
           <td>Name</td>
         <tr/>
+        </thead>
+        <tbody>
         `;
         for (const item of lastTen) {
-          data += `
-            <tr>
+          data +=
+          `<tr name="trIsLoaded">
               <td>${++counter}</td>
               <td>${item.number}</td>
               <td>${item.name}</td>
-            <tr/>
-          `;
+            </tr>`;
         }
         data += `
+        </tbody>
         </table>
       </section>
       </br>${footer}
       <script src="/add.js"></script>
    </body>
   `;
+  console.log(data);
   const html = head.concat(header).concat(data);
   return html;
 };
