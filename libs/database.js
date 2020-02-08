@@ -35,7 +35,7 @@ const serializer = {
       const res = callback(item);
       if (res) result.push(res);
     }
-    if (result.length > 0) return result;
+    return result;
   },
   'insert': (name, callback) => {
     const table = base[name];
@@ -45,7 +45,30 @@ const serializer = {
     write(fileName, table);
     const data = read(fileName);
     base[name] = data;
-  }
+  },
+  'update': (tableName, callback) => {
+    const table = base[tableName];
+    const result = [];
+    let i = 0;
+    for (const item of table) {
+      const res = callback(item);
+      if (res) {
+        res.index = i;
+        result.push(res);
+      }
+      i++;
+    }
+    const len = result.length;
+    if (len > 1) {
+      throw new Error(`There are more than 1 res for number: ${result}`);
+    } else if (len === 0) return;
+    const { number, name, index } = result[0];
+    table[index] = { number, name };
+    const fileName = tableName + '.json';
+    write(fileName, table);
+    const data = read(fileName);
+    base[tableName] = data;
+  },
 };
 
 const database = (name, operation, callback) => {

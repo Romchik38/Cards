@@ -12,13 +12,9 @@ const btnSave = document.querySelector('#btnSave');
 
 let visibleCount = 0;
 
-const hideButton = (param, element) => {
-  if (param === true) {
-    element.disabled = 1;
-    element.disabled = 1;
-  } else {
-    element.disabled = 0;
-    element.disabled = 0;
+const hideButton = (param, arr) => {
+  for (const item of arr) {
+    item.disabled = param;
   }
 };
 
@@ -42,7 +38,7 @@ const addClick = element => {
     const tdNumber = document.querySelector('#tdNumber' + counter);
     const tdName = document.querySelector('#tdName' + counter);
     pUpdate.innerText = tdNumber.innerText;
-    textAreaUpdate.innerText = tdName.innerText;
+    textAreaUpdate.value = tdName.innerText;
     divUpdate.style.display = 'block';
   });
 };
@@ -77,7 +73,7 @@ const fillTable = obj => {
   }
 };
 
-const parseData = (data, button) => {
+const parseData = (data, hidden) => {
   const len = data.length;
   if (len === 0) {
     spanResult.innerText = 'any results';
@@ -86,13 +82,13 @@ const parseData = (data, button) => {
     spanResult.innerText = `found ${len} result(s)`;
     fillTable(data);
   }
-  hideButton(false, button);
+  hideButton(0, hidden);
 };
 
 btnSearch.addEventListener('click', () => {
   const data = inpSearch.value;
   if (data.length === 0) return;
-  hideButton(true, btnSearch);
+  hideButton(1, [btnSearch]);
   fetch('/getnumber', {
     method: 'POST',
     body: JSON.stringify(data),
@@ -102,7 +98,7 @@ btnSearch.addEventListener('click', () => {
   })
     .then(response => response.json())
     .then(json => {
-      parseData(json, btnSearch);
+      parseData(json, [btnSearch]);
     });
 });
 
@@ -123,10 +119,10 @@ spanUpdate.addEventListener('mouseover', e => {
 
 btnSave.addEventListener('click', () => {
   const number = pUpdate.innerText.trim();
-  const name = textAreaUpdate.innerHTML.trim();
+  const name = textAreaUpdate.value.trim();
   if (number.length > 0 && name.length > 0) {
     const data = { number, name };
-    hideButton(true, btnSave);
+    hideButton(1, [btnSave, textAreaUpdate]);
     fetch('/update', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -136,7 +132,9 @@ btnSave.addEventListener('click', () => {
     })
       .then(response => response.json())
       .then(json => {
-        parseData(json, btnSave);
+        textAreaUpdate.value = '';
+        divUpdate.style.display = 'none';
+        parseData(json, [btnSave, textAreaUpdate]);
       });
   }
 });

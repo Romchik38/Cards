@@ -22,7 +22,7 @@ const bigintFns = {
       body.push(chunk);
     }).on('end', () => {
       body = Buffer.concat(body);
-      body = JSON.parse(body).trim();
+      body = JSON.parse(body);
       if (body) {
         const result = bigintSerialize(body, page.req.url);
         const responseData = JSON.stringify(result);

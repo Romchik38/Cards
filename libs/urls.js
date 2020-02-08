@@ -9,6 +9,7 @@ const urls = {
   '/add': add,
   '/getnumber': bigintNumbers.first(),
   '/addcard': bigintNumbers.first(),
+  '/update': bigintNumbers.first(),
   '/*\\.*': {
     '.ico': '/public/img',
     '.jpeg': '/public/img',

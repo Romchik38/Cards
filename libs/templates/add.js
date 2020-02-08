@@ -53,7 +53,6 @@ const tem = parameters => {
       <script src="/add.js"></script>
    </body>
   `;
-  console.log(data);
   const html = head.concat(header).concat(data);
   return html;
 };
