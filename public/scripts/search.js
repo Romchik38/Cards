@@ -9,8 +9,14 @@ const spanUpdate = document.querySelector('#spanUpdate');
 const tableResult = document.querySelector('#tableResult');
 const textAreaUpdate = document.querySelector('#textAreaUpdate');
 const btnSave = document.querySelector('#btnSave');
+const radios = document.querySelectorAll("input[name='radio']");
 
 let visibleCount = 0;
+
+const urls = {
+  'number': '/getnumber',
+  'name': '/getname'
+};
 
 const hideButton = (param, arr) => {
   for (const item of arr) {
@@ -22,6 +28,12 @@ const display = (param, arr) => {
   for (const item of arr) {
     item.style.display = param;
   }
+};
+
+const getChecked = arr => {
+  for (const checkbox of arr) {
+    if (checkbox.checked === true) return checkbox.dataset.field;
+  };
 };
 
 const createElem = (tag, value = '') => {
@@ -92,11 +104,13 @@ const parseData = (data, hidden) => {
 };
 
 btnSearch.addEventListener('click', () => {
+  const field = getChecked(radios);
+  const url = urls[field];
   const data = inpSearch.value;
   if (data.length === 0) return;
   display('none', [divUpdate]);
   hideButton(1, [btnSearch]);
-  fetch('/getnumber', {
+  fetch(url, {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {

@@ -15,6 +15,8 @@ const tem = parameters => {
     </header>
     <div class="row">
      <section class="col-sm">
+     <input type="radio" data-field="number" name="radio" checked>number
+     <input type="radio" data-field="name" name="radio">name
          <div>
            <input type="text" id="inpSearch" value="" placeholder="Input a number" autofocus>
            <input type="button" id="btnSearch" value="search">

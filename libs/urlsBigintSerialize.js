@@ -1,7 +1,9 @@
 'use strict';
 
 const connector = require('./connector');
-const { cardsByNumber, cardsAll, insert, update } = require('./callbacks');
+const { cardsByNumber, cardsByName, cardsAll, insert, update
+} = require('./callbacks');
+
 const { PREFIX } = require('./consts');
 
 const getparameters = (param, table, operation, callback) =>
@@ -10,6 +12,9 @@ const getparameters = (param, table, operation, callback) =>
 const serializer = {
   '/getnumber': number => getparameters(
     { number }, 'cards', 'select', cardsByNumber
+  ),
+  '/getname': name => getparameters(
+    { name }, 'cards', 'select', cardsByName
   ),
   '/addcard': str => {
     const name = str.trim();

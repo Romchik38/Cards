@@ -8,6 +8,7 @@ const urls = {
   '/search': main,
   '/add': add,
   '/getnumber': bigintNumbers.first(),
+  '/getname': bigintNumbers.first(),
   '/addcard': bigintNumbers.first(),
   '/update': bigintNumbers.first(),
   '/*\\.*': {

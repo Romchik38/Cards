@@ -13,6 +13,14 @@ callbacks.cardsByNumber = function(elem) {
   }
 };
 
+callbacks.cardsByName = function(elem) {
+  const name = elem.name.toLowerCase();
+  const res = name.search(this.name.toLowerCase());
+  if (res >= 0) {
+    return elem;
+  }
+};
+
 callbacks.insert = function() {
   return this;
 };
