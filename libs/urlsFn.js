@@ -2,7 +2,7 @@
 
 const connector = require('./connector');
 
-const { url, cardsAll } = require('./callbacks.js');
+const { cardsAll, url, urlsMenu } = require('./callbacks.js');
 
 const getparameters = (param, table, operation, callback) =>
   connector('database', table, operation, callback.bind(param));
@@ -10,6 +10,9 @@ const getparameters = (param, table, operation, callback) =>
 const generalParameters = page => {
   const data = getparameters({ url: page.url }, 'pages', 'select', url)[0];
   page.parameters['title'] = data.title;
+  page.parameters['url'] = page.url;
+  const menu = getparameters({}, 'pages', 'select', urlsMenu);
+  page.parameters['menu'] = menu;
 };
 
 const urlsFn = {

@@ -69,21 +69,26 @@ const fillTable = obj => {
       const tableTr = createElem('tr');
       tableTr.setAttribute('name', 'trIsAdded');
       const tableTdCounter = createElem('td', ++counter);
+      tableTdCounter.classList.add('text-center');
       tableTr.appendChild(tableTdCounter);
       const tableTdNumber = createElem('td', val.number);
       tableTdNumber.id = 'tdNumber' + counter;
+      tableTdNumber.classList.add('text-center');
       tableTr.appendChild(tableTdNumber);
       const tableTdName = createElem('td', val.name);
       tableTdName.id = 'tdName' + counter;
       tableTr.appendChild(tableTdName);
       const tableTdUpdate = createElem('td', '');
+      tableTdUpdate.classList.add('text-center');
       tableTr.appendChild(tableTdUpdate);
       const tdUpdateButton = createElem('input');
       tdUpdateButton.type = 'button';
       tdUpdateButton.name = 'btnUpdate';
       tdUpdateButton.value = 'update';
       tdUpdateButton.dataCounter = counter;
+      tdUpdateButton.classList.add('btn-secondary');
       tdUpdateButton.style.visibility = 'hidden';
+
       addClick(tdUpdateButton);
       tableTdUpdate.appendChild(tdUpdateButton);
       tableResult.appendChild(tableTr);

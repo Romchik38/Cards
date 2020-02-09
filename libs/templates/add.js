@@ -11,43 +11,49 @@ const tem = parameters => {
   const { lastTen } = parameters;
   let counter = 0;
   let data = `
-     <section>
-       <h1>Adding Cards</h1>
-       <p>You can add a card. Please fill the form below</p>
-       <div>
-         <textarea id="textArea1" value="" placeholder="Name, tel, email" maxlength="100" autofocus cols="50" rows
-="3"></textarea>
-         </br>
-         <input type="button" id="btnAdd" value="Add">
-         </br>
+     <header>
+       <div class="row justify-content-center">
+         <h1>Adding Cards</h1>
        </div>
-      </section>
-      <section>
-        <div>
-          <span id="spanResult">Last 10 cards</span>
-        </div>
-        <table id=tableResult>
-        <thead>
-        <tr>
-          <td>#</td>
-          <td>Number</td>
-          <td>Name</td>
-        <tr/>
-        </thead>
-        <tbody>
-        `;
-        for (const item of lastTen) {
-          data +=
-          `<tr name="trIsLoaded">
-              <td>${++counter}</td>
-              <td>${item.number}</td>
-              <td>${item.name}</td>
-            </tr>`;
-        }
-        data += `
-        </tbody>
-        </table>
-      </section>
+        <p>You can add a card. Please fill the form below</p>
+     </header>
+     <div class="row">
+       <section class="col-sm">
+         <div>
+           <textarea id="textArea1" value="" placeholder="Name, tel, email" maxlength="100" autofocus cols="50" rows
+  ="3"></textarea>
+           </br>
+           <input type="button" id="btnAdd" value="Add" class="btn btn-primary">
+           </br>
+         </div>
+        </section>
+        <section class="col-sm">
+          <div>
+            <span id="spanResult">Last 10 cards</span>
+          </div>
+          <table class="table table-bordered table-hover table-striped">
+          <thead class="table-dark">
+          <tr>
+            <td>#</td>
+            <td>Number</td>
+            <td>Name</td>
+          <tr/>
+          </thead>
+          <tbody id="tableResult" class="table-striped">
+          `;
+          for (const item of lastTen) {
+            data +=
+            `<tr name="trIsLoaded">
+                <td>${++counter}</td>
+                <td>${item.number}</td>
+                <td>${item.name}</td>
+              </tr>`;
+          }
+          data += `
+          </tbody>
+          </table>
+        </section>
+      </div>
       <script src="/add.js"></script>
       </br>${footer}
   `;
