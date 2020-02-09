@@ -18,6 +18,12 @@ const hideButton = (param, arr) => {
   }
 };
 
+const display = (param, arr) => {
+  for (const item of arr) {
+    item.style.display = param;
+  }
+};
+
 const createElem = (tag, value = '') => {
   const element = document.createElement(tag);
   element.innerText = value;
@@ -39,7 +45,7 @@ const addClick = element => {
     const tdName = document.querySelector('#tdName' + counter);
     pUpdate.innerText = tdNumber.innerText;
     textAreaUpdate.value = tdName.innerText;
-    divUpdate.style.display = 'block';
+    display('block', [divUpdate]);
   });
 };
 
@@ -88,6 +94,7 @@ const parseData = (data, hidden) => {
 btnSearch.addEventListener('click', () => {
   const data = inpSearch.value;
   if (data.length === 0) return;
+  display('none', [divUpdate]);
   hideButton(1, [btnSearch]);
   fetch('/getnumber', {
     method: 'POST',
@@ -133,7 +140,7 @@ btnSave.addEventListener('click', () => {
       .then(response => response.json())
       .then(json => {
         textAreaUpdate.value = '';
-        divUpdate.style.display = 'none';
+        display('none', [divUpdate]);
         parseData(json, [btnSave, textAreaUpdate]);
       });
   }

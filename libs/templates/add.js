@@ -11,7 +11,6 @@ const tem = parameters => {
   const { lastTen } = parameters;
   let counter = 0;
   let data = `
-   <body>
      <section>
        <h1>Adding Cards</h1>
        <p>You can add a card. Please fill the form below</p>
@@ -49,9 +48,8 @@ const tem = parameters => {
         </tbody>
         </table>
       </section>
-      </br>${footer}
       <script src="/add.js"></script>
-   </body>
+      </br>${footer}
   `;
   const html = head.concat(header).concat(data);
   return html;

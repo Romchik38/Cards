@@ -11,6 +11,7 @@ const urls = {
   '/addcard': bigintNumbers.first(),
   '/update': bigintNumbers.first(),
   '/*\\.*': {
+    '.css': '/public/css',
     '.ico': '/public/img',
     '.jpeg': '/public/img',
     '.js': '/public/scripts',

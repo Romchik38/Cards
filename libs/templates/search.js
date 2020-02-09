@@ -9,20 +9,21 @@ const tem = parameters => {
   const header = headerTemplate(parameters);
   const footer = footerTemplate(parameters);
   const data = `
-   <body>
-     <section>
-       <h1>Searching Cards</h1>
-       <p>You can find a card by number. Please fill the form below</p>
-       <div>
-         <input type="text" id="inpSearch" value="" placeholder="Input a number" autofocus>
-         <input type="button" id="btnSearch" value="search">
-         </br>
-       </div>
+    <header>
+      <h1>Searching Cards</h1>
+      <p>You can find a card by number. Please fill the form below</p>
+    </header>
+    <div class="row">
+     <section class="col-sm">
+         <div>
+           <input type="text" id="inpSearch" value="" placeholder="Input a number" autofocus>
+           <input type="button" id="btnSearch" value="search">
+         </div>
+         <div>
+           <span id="spanResult">add number</span>
+         </div>
       </section>
-      <section>
-        <div>
-          <span id="spanResult">add number</span>
-        </div>
+      <section class="col-sm">
         <table id=tableResult>
           <tr>
             <td>#</td>
@@ -38,9 +39,9 @@ const tem = parameters => {
         <input type="button" id="btnSave" value="save">
         </div>
       </section>
-      </br>${footer}
+     </div>
       <script src="/search.js"></script>
-   </body>
+      </br>${footer}
   `;
   const html = head.concat(header).concat(data);
   return html;

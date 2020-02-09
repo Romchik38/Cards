@@ -9,14 +9,12 @@ const tem = parameters => {
   const header = headerTemplate(parameters);
   const footer = footerTemplate(parameters);
   const data = `
-   <body>
-     <section>
-       <h2>Main Page</h2>
-       <p>On this site you can find a card by it number.</p>
-       <p>Visit Search page to find or Add page to add the number.</p>
-      </section>
-      </br>${footer}
-   </body>
+       <section>
+         <h2>Main Page</h2>
+         <p>On this site you can find a card by it number.</p>
+         <p>Visit Search page to find or Add page to add the number.</p>
+       </section>
+        </br>${footer}
   `;
   const html = head.concat(header).concat(data);
   return html;
