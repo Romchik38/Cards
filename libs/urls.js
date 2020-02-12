@@ -14,6 +14,7 @@ const urls = {
   '/*\\.*': {
     '.css': '/public/css',
     '.ico': '/public/img',
+    '.jpg': '/public/img',
     '.jpeg': '/public/img',
     '.js': '/public/scripts',
   },
