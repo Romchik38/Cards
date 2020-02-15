@@ -1,2 +1,4 @@
 database/
+!pages.json
+!simple.json
 libs/consts.js
