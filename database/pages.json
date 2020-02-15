@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Main Page",
+    "url": "/",
+    "title": "Cards | Wellcome to Main Page",
+    "menu": true
+  },
+  {
+    "name": "Search Page",
+    "url": "/search",
+    "title": "Cards | Search Page",
+    "menu": true
+  },
+  {
+    "name": "Add Page",
+    "url": "/add",
+    "title": "Cards | Add Page",
+    "menu": true
+  }
+]
