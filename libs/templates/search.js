@@ -17,10 +17,10 @@ const tem = parameters => {
     </header>
     <div class="row">
      <section class="col-sm-4">
-     <input type="radio" data-field="number" name="radio" checked>number
-     <input type="radio" data-field="name" name="radio">name
+     <input type="radio" data-field="number" name="radio">number
+     <input type="radio" data-field="name" name="radio" checked>name
          <div>
-           <input type="text" id="inpSearch" value="" placeholder="Input a number" autofocus class="form-control">
+           <input type="text" id="inpSearch" value="" placeholder="Input something" autofocus class="form-control">
            <span id="spanResult">add number</span></br>
            <input type="button" id="btnSearch" value="search" class="btn btn-primary">
          </div>
