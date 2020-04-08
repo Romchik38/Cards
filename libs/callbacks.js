@@ -15,10 +15,8 @@ callbacks.cardsByNumber = function(elem) {
 
 callbacks.cardsByName = function(elem) {
   const name = elem.name.toLowerCase();
-  const res = name.search(this.name.toLowerCase());
-  if (res >= 0) {
-    return elem;
-  }
+  const res = name.includes(this.name.toLowerCase());
+  if (res) return elem;
 };
 
 callbacks.insert = function() {
