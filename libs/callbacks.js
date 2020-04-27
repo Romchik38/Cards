@@ -3,7 +3,8 @@
 const callbacks = Object.create(null);
 
 callbacks.cardsAll = function(elem) {
-  return elem;
+  if (elem && typeof elem !== 'boolean') return elem;
+  throw new Error('Element shouldn\'t be undefined, null or boolean');
 };
 
 callbacks.cardsByNumber = function(elem) {
