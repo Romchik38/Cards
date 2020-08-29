@@ -26,6 +26,11 @@ const serialize = (req, res) => {
 };
 
 const server = http.createServer((req, res) => {
+  if (req.headers.host != 'localhost:8080') {
+    res.writeHead (301, { 'Location': 'http://cards.co' + req.url });
+    res.end('400 (bad request');
+    return;
+  }
   const result = serialize(req, res);
   if (result) {
     const { writeHead, data } = result;
