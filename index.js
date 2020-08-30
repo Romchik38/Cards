@@ -26,11 +26,6 @@ const serialize = (req, res) => {
 };
 
 const server = http.createServer((req, res) => {
-  if (req.headers.host != 'localhost:8080') {
-    res.writeHead (301, { 'Location': 'http://cards.co' + req.url });
-    res.end();
-    return;
-  }
   const result = serialize(req, res);
   if (result) {
     const { writeHead, data } = result;
@@ -39,7 +34,7 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(8080);
+server.listen(8080,'127.0.0.1');
 
 server.on('error', err => {
   console.log(err);
